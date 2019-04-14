@@ -21,20 +21,20 @@ main:
 	li $t2, 0	#Inicializa el resultado a 0
 	
 	bucle:
-		addi $t1, $t1, 1
-		bgt $t1, $t0, fin
-		add $t2, $t2, $t1
-		j bucle
+		addi $t1, $t1, 1	#Suma 1 al contador
+		bgt $t1, $t0, fin	#Si el contador es mayor que el untimo numero dado, salta a la etiqueta fin
+		add $t2, $t2, $t1	#Suma el resultado con el numero acutual del contador
+		j bucle			#Reinicia el bucle
 	
 fin:
 
 	li $v0, 4
-	la $a0, cad2
+	la $a0, cad2	#Muestra la cad2
 	syscall
 	
 	li $v0, 1
-	move $a0, $t2
+	move $a0, $t2	#Muestra el resultado de la suma
 	syscall	
 
-	li $v0, 10
+	li $v0, 10	#DFinzaliza el programa
 	syscall
