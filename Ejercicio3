@@ -13,8 +13,9 @@ datos1:	.half 4,7,2
 
 datos2:.byte 2,3,5,7
 
-res1: .asciiz "\nLa suma del primer word y del half con valor 3 es: 1"
+res1: .asciiz "\nLa suma del primer word y del half con valor 3 es: "
 res2: .asciiz "\nEl byte inicializado a 4 en la etiqueta datos1 contiene el numero en ascii "
+
 	.globl main
 	.text
 
@@ -22,9 +23,9 @@ main:
 
 	la $t0, datos1		#Cargo la etiqueta de datos1 en t0
 	
-	lw $t1, 8($t0)		#Cargo el word 1 en t1
+	lw $t1, 8($t0)		#Cargo el word con valor 1 en t1
 	
-	lh $t2, 18($t0)		#Cargo el half 3 en t2
+	lh $t2, 18($t0)		#Cargo el half con valor 3 en t2
 	
 	add $t3, $t1, $t2	#Almaceno en t3 la suma de t1 y t2
 	
@@ -34,8 +35,8 @@ main:
 	la $a0, res1
 	syscall
 	
-	li $v0, 2
-	la $a0, 24($t0)
+	li $v0, 1
+	lh $a0, 24($t0)
 	syscall
 	
 	la $t0, datos2		#Cargo la etiqueta de datos2 en t0
